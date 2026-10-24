@@ -12,5 +12,15 @@ namespace Interpolation_WPF.Models
 
         public List<double> Coefficients { get; set; } = new();
 
+        public double Evaluate(double x)
+        {
+            double result = Coefficients[^1];
+
+            for(int i = Coefficients.Count()-1; i > 0; i--)
+            {
+                result = result * x + Coefficients[i - 1];
+            }
+            return result;
+        }
     }
 }

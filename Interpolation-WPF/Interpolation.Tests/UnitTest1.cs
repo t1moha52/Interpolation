@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Interpolation_WPF.Models;
+using Interpolation_WPF.Mathematics;
 using Xunit;
 
 
@@ -10,12 +11,37 @@ namespace Interpolation.Tests
     {
         public class EngineTests
         {
+
+            [Fact]
+            public void TestEvaluate1()
+            {
+                Polynom test = new()
+                {
+                    Coefficients = new List<double> { -1, 2, 0, 5, 2 }
+                };
+
+                double result = test.Evaluate(2);
+
+                Assert.Equal(75, result);
+            }
+
+            [Fact]
+            public void TestEvaluate2()
+            {
+                Polynom test = new()
+                {
+                    Coefficients = new List<double> { -1, 2, 0, 5, 2 }
+                };
+
+                double result = test.Evaluate(0);
+
+                Assert.Equal(-1, result);
+            }
+
+
             [Fact]
             public void TestAddPol()
             {
-                // Arrange
-                Engine engine = new();
-
                 Polynom p1 = new()
                 {
                     Coefficients = new List<double> { 2, 3, 4 }
@@ -26,10 +52,8 @@ namespace Interpolation.Tests
                     Coefficients = new List<double> { 5, 2 }
                 };
 
-                // Act
-                Polynom result = engine.AddPol(p1, p2);
+                Polynom result = PolynomialOperations.AddPol(p1, p2);
 
-                // Assert
                 Assert.Equal(
                     new double[] { 7, 5, 4 },
                     result.Coefficients

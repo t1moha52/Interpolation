@@ -1,25 +1,20 @@
-﻿using System;
+﻿using Interpolation_WPF.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Interpolation_WPF.Models
+namespace Interpolation_WPF.Mathematics
 {
-    public class Engine 
+    public static class PolynomialOperations
     {
-
-        public Engine()
-        {
-
-        }
-
-        public Polynom AddPol(Polynom polynom1, Polynom polynom2)
+        public static Polynom AddPol(Polynom polynom1, Polynom polynom2)
         {
             Polynom result = new();
 
             int length1 = polynom1.Coefficients.Count();
             int length2 = polynom2.Coefficients.Count();
 
-            int maxLength = Math.Max(length1 , length2);
+            int maxLength = Math.Max(length1, length2);
 
             for (int i = 0; i < maxLength; i++)
             {
@@ -32,10 +27,17 @@ namespace Interpolation_WPF.Models
             return result;
         }
 
-        protected Polynom MultPol(Polynom polynom1, Polynom polynom2)
+        public static Polynom MultPol(Polynom pol1, Polynom pol2)
         {
-            Polynom result = new();
+            Polynom result = new Polynom();
+
+
+
+
+
+
             return result;
         }
+
     }
 }
