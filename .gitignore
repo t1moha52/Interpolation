@@ -1,0 +1,73 @@
+## Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Build output
+bin/
+obj/
+*/bin/
+*/obj/
+
+## Rider
+.idea/
+
+## NuGet
+*.nupkg
+# The packages folder can be ignored because of PackageReference restore
+packages/
+project.lock.json
+project.assets.json
+
+## VS Code
+.vscode/
+
+## Dotnet user secrets
+secrets.json
+.microsoft/usersecrets/
+
+## Publish outputs
+publish/
+*.Publish.xml
+
+## Test results
+TestResults/
+*.trx
+*.coverage
+
+## Logs
+logs/
+
+## Visual Studio code coverage
+*.coveragexml
+
+## Resharper
+_ReSharper*/
+*.ReSharper*/
+*.DotSettings.user
+
+## Dotnet tool files
+dotnet-tools.json
+
+## Rider and JetBrains caches
+.idea/
+.idea/**/workspace.xml
+
+## OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+## Git
+.gitignore.local
+
+## Sensitive or local config
+*.local
+appsettings.*.json
+
+## Rider
+.idea/
+
+# End of .gitignore

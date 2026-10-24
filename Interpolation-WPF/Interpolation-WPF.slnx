@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Interpolation-WPF/Interpolation-WPF.csproj" />
+  <Project Path="Interpolation.Tests/Interpolation.Tests.csproj" Id="53c54a54-94e9-4f8d-a2a9-47a91dfdf6f5" />
+</Solution>
