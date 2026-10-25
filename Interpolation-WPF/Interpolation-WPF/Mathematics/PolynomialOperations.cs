@@ -31,10 +31,26 @@ namespace Interpolation_WPF.Mathematics
         {
             Polynom result = new Polynom();
 
+            int length1 = pol1.Coefficients.Count();
+            int length2 = pol2.Coefficients.Count();
 
+            if (length1 == 0 && length2 == 0)
+                return result;
 
+            int resultlength = length1 + length2 - 1;
 
+            for (int i = 0; i < resultlength; i++)
+            {
+                result.Coefficients.Add(0);
+            }
 
+            for (int i = 0; i < length1; i++)
+            {
+                for (int j = 0; j < length2; j++)
+                {
+                    result.Coefficients[i + j] += pol1.Coefficients[i] * pol2.Coefficients[j];
+                }
+            }
 
             return result;
         }
