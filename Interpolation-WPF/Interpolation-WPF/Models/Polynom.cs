@@ -18,9 +18,20 @@ namespace Interpolation_WPF.Models
 
             for(int i = Coefficients.Count()-1; i > 0; i--)
             {
-                result = result * x + Coefficients[i - 1];
+                result = Math.Round(result * x + Coefficients[i - 1], 6);
             }
             return result;
+        }
+
+        public Polynom(List<double> list)
+        {
+            if (list != null)
+                Coefficients = list;
+        }
+
+        public Polynom()
+        {
+
         }
     }
 }
