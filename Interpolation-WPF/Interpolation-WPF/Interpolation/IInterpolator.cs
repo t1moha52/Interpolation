@@ -7,9 +7,8 @@ namespace Interpolation_WPF.Interpolation
 {
     internal interface IInterpolator
     {
-        //string Name { get; }
-
-        public Polynom Interpolate(List<double> xs, List<double> ys);
+        public bool CanInterpolate(List<Point> points);
+        public Polynom Interpolate(List<Point> points);
 
     }
 }
