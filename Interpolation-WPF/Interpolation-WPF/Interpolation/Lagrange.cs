@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Windows.Documents;
 using Interpolation_WPF.Mathematics;
 using Interpolation_WPF.Models;
 
@@ -18,6 +19,9 @@ namespace Interpolation_WPF.Interpolation
      
             foreach (Point point in points)
             {
+                if (point.Y.Count != 1)
+                    return false;
+
                 if (point == null || point.Y == null || point.Y.Count == 0)
                     return false;
 
@@ -41,6 +45,10 @@ namespace Interpolation_WPF.Interpolation
 
         public Polynom Interpolate(List<Point> points)
         {
+
+            if (!CanInterpolate(points))
+                throw new ArgumentException("Wrong input.");
+
             List<double> xs = new();
             List<double> ys = new();
 
@@ -50,38 +58,43 @@ namespace Interpolation_WPF.Interpolation
                 ys.Add(p.Y[0]);
             }
 
-            if (xs.Count != ys.Count)
-                throw new ArgumentException("The number of nodes and values must match.");
+            //if (xs.Count != ys.Count)
+            //    throw new ArgumentException("The number of nodes and values must match.");
 
-            if (xs.Count == 0)
-                throw new ArgumentException("At least one interpolation node is required.");
+            //if (xs.Count == 0)
+            //    throw new ArgumentException("At least one interpolation node is required.");
 
-            if (xs.Distinct().Count() != xs.Count)
-                throw new ArgumentException("Lagrange interpolation requires distinct nodes.");
+            //if (xs.Distinct().Count() != xs.Count)
+            //    throw new ArgumentException("Lagrange interpolation requires distinct nodes.");
+
 
             Polynom result = new Polynom(new List<double>() { 0 });
 
             int length = xs.Count;
 
+            List<Polynom> Base = Lagrange_Bases(points);
+
             for (int i = 0; i < length; i++)
             {
-                Polynom basis = new(new List<double>() { 1 });
+                //Polynom basis = new(new List<double>() { 1 });
+                Polynom basis = new Polynom(Base[i].Coefficients.ToList());
 
-                for (int j = 0; j < length; j++)
-                {
-                    if (i != j)
-                    {
-                        Polynom factor = new(new List<double> { -xs[j], 1 });
+                //for (int j = 0; j < length; j++)
+                //{
+                //    if (i != j)
+                //    {
+                //        Polynom factor = new(new List<double> { -xs[j], 1 });
 
-                        basis = PolynomialOperations.MultPol(basis, factor);
-                    }
-                }
+                //        basis = PolynomialOperations.MultPol(basis, factor);
+                //    }
+                //}
 
-                double lx = basis.Evaluate(xs[i]);
+                //double lx = basis.Evaluate(xs[i]);
 
                 for(int k = 0; k < basis.Coefficients.Count(); k++)
                 {
-                    basis.Coefficients[k] = basis.Coefficients[k] * ys[i] / lx;
+                    //basis.Coefficients[k] = basis.Coefficients[k] * ys[i] / lx;
+                    basis.Coefficients[k] = basis.Coefficients[k] * ys[i];
                 }
 
                 result = PolynomialOperations.AddPol(result, basis);
