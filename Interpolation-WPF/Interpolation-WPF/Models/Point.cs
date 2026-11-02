@@ -16,9 +16,10 @@ namespace Interpolation_WPF.Models
             Y.Add(y);
         }
 
-        public Point()
+        public Point(double x, List<double> y)
         {
-
+            X = x;
+            Y = y;
         }
     }
 }

@@ -58,16 +58,16 @@ namespace Interpolation_WPF.Interpolation
 
         public List<double> DD(List<Point> points)
         {
-            List<double> Coefficients = new();
+            List<double> coefficients = new();
 
             int length = points.Count();
 
             for (int i = 1; i <= length; i++)
             {
-                Coefficients.Add(coef(points[..i]));
+                coefficients.Add(coef(points[..i]));
             }
 
-            return Coefficients;
+            return coefficients;
         }
 
         public double coef(List<Point> points)
@@ -80,9 +80,21 @@ namespace Interpolation_WPF.Interpolation
 
         public Polynom Interpolate(List<Point> points)
         {
-            Polynom result = new();
-            List<double> Coefficients = DD(points);
+            if (!CanInterpolate(points))
+                throw new ArgumentException("Wrong input");
 
+            Polynom result = new Polynom(new List<double> { 0 });
+            List<double> coefficients = DD(points);
+            List<Polynom> bases = Newton_Bases(points);
+
+            int length = points.Count();
+            for (int i = 0; i < length; i++)
+            {
+                Polynom local = new Polynom(new List<double>() { coefficients[i] });
+                local = PolynomialOperations.MultPol(local, bases[i]);
+
+                result = PolynomialOperations.AddPol(result, local);
+            }
 
             return result;
         }
