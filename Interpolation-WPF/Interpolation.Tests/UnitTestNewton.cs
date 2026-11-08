@@ -118,7 +118,7 @@ namespace Interpolation.Tests
 
             //Newton interpolation = new();
 
-            List<double> result = interpolation.DD(points);
+            List<double> result = interpolation.DD_Coefficients(points);
 
             Assert.Equal(new List<double> { 2, 1, 1.0 / 3 }, result);
         }
@@ -134,7 +134,7 @@ namespace Interpolation.Tests
 
             //Newton interpolation = new();
 
-            List<double> result = interpolation.DD(points);
+            List<double> result = interpolation.DD_Coefficients(points);
 
             Assert.Equal(new List<double> { 5, 2 }, result);
         }
@@ -149,7 +149,7 @@ namespace Interpolation.Tests
 
             //Newton interpolation = new();
 
-            List<double> result = interpolation.DD(points);
+            List<double> result = interpolation.DD_Coefficients(points);
 
             Assert.Equal(new List<double> { 12 }, result);
         }
@@ -166,7 +166,7 @@ namespace Interpolation.Tests
 
             //Newton interpolation = new();
 
-            List<double> result = interpolation.DD(points);
+            List<double> result = interpolation.DD_Coefficients(points);
 
             Assert.Equal(new List<double> { 1, 1, 0 }, result);
         }
@@ -185,7 +185,7 @@ namespace Interpolation.Tests
 
             //Newton interpolation = new();
 
-            interpolation.DD(points);
+            interpolation.DD_Coefficients(points);
 
             Assert.Equal(original.Count, points.Count);
 

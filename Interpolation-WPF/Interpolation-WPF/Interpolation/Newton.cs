@@ -56,7 +56,7 @@ namespace Interpolation_WPF.Interpolation
             return bases;
         }
 
-        public List<double> DD(List<Point> points)
+        public List<double> DD_Coefficients(List<Point> points)
         {
             List<double> coefficients = new();
 
@@ -84,7 +84,7 @@ namespace Interpolation_WPF.Interpolation
                 throw new ArgumentException("Wrong input");
 
             Polynom result = new Polynom(new List<double> { 0 });
-            List<double> coefficients = DD(points);
+            List<double> coefficients = DD_Coefficients(points);
             List<Polynom> bases = Newton_Bases(points);
 
             int length = points.Count();
