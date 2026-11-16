@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Interpolation_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="Interpolation" Height="600" Width="800">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -83,7 +83,8 @@
 
                 <Button Margin="5" Grid.Column="1"
                         Content="+"
-                        FontSize="20"/>
+                        FontSize="20"
+                        Command="{Binding CalculatorCommand}"/>
             </Grid>
 
             <Grid Grid.Row="1">

@@ -5,8 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Interpolation_WPF"
         mc:Ignorable="d"
-        Title="CalculatorWindow" Height="450" Width="800">
+        Title="Calculator" Height="450" Width="600">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Margin="5"
+                Content="Polynom 1"
+                FontSize="25"
+                Command="{Binding AddPol1Command}"/>
+
+        <TextBox Grid.Column="1"
+                 Margin="5"
+                 IsReadOnly="True"
+                 FontSize="25"
+                 VerticalContentAlignment="Center"
+                 HorizontalContentAlignment="Left"
+                 Text="{Binding Polynom1Display}"/>
+
+        <Button Grid.Row="1"
+                Margin="5"
+                Content="Polynom 2"
+                FontSize="25"
+                Command="{Binding AddPol2Command}"/>
+
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Margin="5"
+                 IsReadOnly="True"
+                 FontSize="25"
+                 VerticalContentAlignment="Center"
+                 HorizontalContentAlignment="Left"
+                 Text="{Binding Polynom2Display}"/>
+
+        <Button Grid.Row="2"
+                Margin="5"
+                Content="+"
+                FontSize="25"
+                Command="{Binding PolynomialAddition}"/>
+
+        <Button Grid.Row="2"
+                Grid.Column="1"
+                Margin="5"
+                Content="*"
+                FontSize="25"
+                Command="{Binding PolynomialMultiplication}"/>
+
+        <TextBox Grid.Row="3"
+                 Grid.ColumnSpan="2"
+                 Grid.Column="0"
+                 Margin="5"
+                 IsReadOnly="True"
+                 FontSize="25"
+                 VerticalContentAlignment="Center"
+                 HorizontalContentAlignment="Left"
+                 Text="{Binding CalculationResult}"/>
     </Grid>
 </Window>

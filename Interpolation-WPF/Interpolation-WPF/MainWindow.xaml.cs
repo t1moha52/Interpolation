@@ -37,19 +37,16 @@ namespace Interpolation_WPF
         {
             PointsGrid.Columns.Clear();
 
-            // Столбец X
             PointsGrid.Columns.Add(new DataGridTextColumn
             {
                 Header = "X",
                 Binding = new Binding("X")
             });
 
-            // Максимальное количество производных среди всех точек
             int maxCount = mainViewModel.Points.Count == 0
                 ? 0
                 : mainViewModel.Points.Max(p => p.Derivatives.Count);
 
-            // Создание столбцов производных
             for (int i = 0; i < maxCount; i++)
             {
                 PointsGrid.Columns.Add(new DataGridTextColumn

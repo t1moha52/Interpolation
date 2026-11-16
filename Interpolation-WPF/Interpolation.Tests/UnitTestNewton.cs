@@ -20,8 +20,6 @@ namespace Interpolation.Tests
                 new Point(4, 0)
             };
 
-            //Newton interpolation = new();
-
             List<Polynom> bases = interpolation.Newton_Bases(points);
 
             Assert.Equal(3, bases.Count);
@@ -40,8 +38,6 @@ namespace Interpolation.Tests
                 new Point(5, 10)
             };
 
-            //Newton interpolation = new();
-
             List<Polynom> bases = interpolation.Newton_Bases(points);
 
             Assert.Single(bases);
@@ -56,8 +52,6 @@ namespace Interpolation.Tests
                 new Point(3, 10),
                 new Point(5, 20)
             };
-
-            //Newton interpolation = new();
 
             List<Polynom> bases = interpolation.Newton_Bases(points);
 
@@ -76,8 +70,6 @@ namespace Interpolation.Tests
                 new Point(3, 0)
             };
 
-            //Newton interpolation = new();
-
             List<Polynom> bases = interpolation.Newton_Bases(points);
 
             Assert.Equal(2, bases.Count);
@@ -94,8 +86,6 @@ namespace Interpolation.Tests
                 new Point(2, 0),
                 new Point(3, 0)
             };
-
-            //Newton interpolation = new();
 
             List<Polynom> bases = interpolation.Newton_Bases(points);
 
@@ -116,8 +106,6 @@ namespace Interpolation.Tests
                 new Point(4, 7)
             };
 
-            //Newton interpolation = new();
-
             List<double> result = interpolation.DD_Coefficients(points);
 
             Assert.Equal(new List<double> { 2, 1, 1.0 / 3 }, result);
@@ -132,8 +120,6 @@ namespace Interpolation.Tests
                 new Point(5, 9)
             };
 
-            //Newton interpolation = new();
-
             List<double> result = interpolation.DD_Coefficients(points);
 
             Assert.Equal(new List<double> { 5, 2 }, result);
@@ -146,8 +132,6 @@ namespace Interpolation.Tests
             {
                 new Point(5, 12)
             };
-
-            //Newton interpolation = new();
 
             List<double> result = interpolation.DD_Coefficients(points);
 
@@ -163,8 +147,6 @@ namespace Interpolation.Tests
                 new Point(0, 3),
                 new Point(2, 5)
             };
-
-            //Newton interpolation = new();
 
             List<double> result = interpolation.DD_Coefficients(points);
 
@@ -182,8 +164,6 @@ namespace Interpolation.Tests
             };
 
             List<Point> original = points.ToList();
-
-            //Newton interpolation = new();
 
             interpolation.DD_Coefficients(points);
 

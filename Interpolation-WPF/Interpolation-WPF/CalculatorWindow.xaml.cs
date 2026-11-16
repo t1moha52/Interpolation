@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Interpolation_WPF.ViewModels;
 
 namespace Interpolation_WPF
 {
@@ -17,9 +18,11 @@ namespace Interpolation_WPF
     /// </summary>
     public partial class CalculatorWindow : Window
     {
+        
         public CalculatorWindow()
         {
             InitializeComponent();
+            DataContext = new CalculatorViewModel();
         }
     }
 }

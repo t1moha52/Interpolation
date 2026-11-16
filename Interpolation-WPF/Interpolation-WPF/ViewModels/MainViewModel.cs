@@ -22,6 +22,7 @@ namespace Interpolation_WPF.ViewModels
         public RelayCommand EvaluateCommand { get; set; }
         public RelayCommand DeleteCommand { get; set; }
         public RelayCommand ClearCommand { get; set; }
+        public RelayCommand CalculatorCommand { get; set; }
 
 
         private Polynom? ResultPolynom { get; set; }
@@ -88,6 +89,7 @@ namespace Interpolation_WPF.ViewModels
             EvaluateCommand = new RelayCommand(Evaluate);
             DeleteCommand = new RelayCommand(DeletePoint);
             ClearCommand = new RelayCommand(ClearPoints);
+            CalculatorCommand = new RelayCommand(OpenCalculator);
         }
 
 
@@ -239,6 +241,12 @@ namespace Interpolation_WPF.ViewModels
             EvaluationResult = ResultPolynom.Evaluate(EvaluationValue.Value);
         }
 
+        private void OpenCalculator()
+        {
+            CalculatorWindow window = new CalculatorWindow();
+
+            window.Show();
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
