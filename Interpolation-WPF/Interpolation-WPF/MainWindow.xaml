@@ -5,8 +5,198 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Interpolation_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <DataGrid x:Name="PointsGrid"
+                      Grid.ColumnSpan="3"
+                      ItemsSource="{Binding Points}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      FontSize="15"
+                      Margin="5"
+                      MinColumnWidth="50"
+                      SelectedItem="{Binding SelectedPoint}">
+
+                <DataGrid.Columns>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button Grid.Row="1" Grid.Column="0"
+                    Margin="5"
+                    Content="Add"
+                    FontSize="20"
+                    Command="{Binding AddPointCommand}"/>
+
+            <Button Grid.Row="1" Grid.Column="1"
+                    Margin="5"
+                    Content="Delete"
+                    FontSize="20"
+                    Command="{Binding DeleteCommand}"/>
+
+            <Button Grid.Row="1" Grid.Column="2"
+                    Margin="5"
+                    Content="Clear"
+                    FontSize="20"
+                    Command="{Binding ClearCommand}"/>
+
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Margin="5" 
+                        Content="Interpolate"
+                        FontSize="20"
+                        Command="{Binding InterpolateCommand}"/>
+
+                <Button Margin="5" Grid.Column="1"
+                        Content="+"
+                        FontSize="20"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="5"
+                           Text="Lagrange Bases:"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom"
+                           FontSize="20"
+                           />
+
+                <TextBlock Grid.Column="1"
+                           Margin="5"
+                           Text="Newton Bases:"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom"
+                           FontSize="20"
+                           />
+                
+                <TextBox Grid.Column="0"
+                         Grid.Row="1"
+                         Margin="5"
+                         FontSize="15"
+                         IsReadOnly="True"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding LagrangeBases}"/>
+
+                <TextBox Grid.Column="1"
+                         Grid.Row="1"
+                         Margin="5"
+                         FontSize="15"
+                         IsReadOnly="True"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding NewtonBases}"/>
+
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="5"
+                           Text="P(X):"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="20"
+                           />
+
+                <TextBox Grid.Column="1"
+                         Margin="5"
+                         FontSize="15"
+                         IsReadOnly="True"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding InterpolationResult}"/>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Margin="5"
+                           Text="X ="
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="20"
+                           />
+
+                <TextBox Grid.Column="1"
+                         Margin="5"
+                         FontSize="15"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding EvaluationValue, UpdateSourceTrigger=LostFocus}"/>
+
+                <Button Grid.Column="2"
+                        Margin="5"
+                        Content="Calculate"
+                        FontSize="20"
+                        Command="{Binding EvaluateCommand}"/>
+
+                <TextBlock Grid.Column="3"
+                           Margin="5"
+                           Text="P(X) ="
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="20"
+                           />
+
+                <TextBox Grid.Column="4"
+                         Margin="5"
+                         FontSize="15"
+                         IsReadOnly="True"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding EvaluationResult}"/>
+            </Grid>
+
+            
+
+        </Grid>
+
+        
 
     </Grid>
 </Window>
