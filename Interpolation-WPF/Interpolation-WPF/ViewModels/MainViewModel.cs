@@ -114,6 +114,18 @@ namespace Interpolation_WPF.ViewModels
         private void ClearPoints()
         {
             Points.Clear();
+
+            ClearOutputs();
+        }
+
+        private void ClearOutputs()
+        {
+            ResultPolynom = null;
+            InterpolationResult = string.Empty;
+            LagrangeBases = string.Empty;
+            NewtonBases = string.Empty;
+            EvaluationResult = null;
+            EvaluationValue = null;
         }
 
 
@@ -182,12 +194,7 @@ namespace Interpolation_WPF.ViewModels
 
         private void Interpolate()
         {
-            ResultPolynom = null;
-            InterpolationResult = string.Empty;
-            LagrangeBases = string.Empty;
-            NewtonBases = string.Empty;
-            EvaluationResult = null;
-            EvaluationValue = null;
+            ClearOutputs();
 
             if (!ValidatePoints(out string error))
             {
@@ -210,13 +217,13 @@ namespace Interpolation_WPF.ViewModels
                 List<Polynom> lBases = lagrange.Lagrange_Bases(mathPoints);
                 for(int i = 0; i < lBases.Count; i++)
                 {
-                    LagrangeBases += $"L{i}: " + lBases[i].Display() + "\n";
+                    LagrangeBases += $"L{i + 1}: " + lBases[i].Display() + "\n";
                 }
 
                 List<Polynom> nBases = newton.Newton_Bases(mathPoints);
                 for (int i = 0; i < nBases.Count; i++)
                 {
-                    NewtonBases += $"N{i}: " + nBases[i].Display() + "\n";
+                    NewtonBases += $"N{i + 1}: " + nBases[i].Display() + "\n";
                 }
             }
             else if (hermit.CanInterpolate(mathPoints)) 

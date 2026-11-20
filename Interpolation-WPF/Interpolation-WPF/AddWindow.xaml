@@ -28,7 +28,7 @@
                      Margin="5"
                      FontSize="15"
                      VerticalContentAlignment="Center"
-                     Text="{Binding X, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding X, UpdateSourceTrigger=LostFocus}"/>
         </Grid>
         
         <DataGrid Grid.Row="1" Margin="5"
@@ -49,7 +49,7 @@
                                     />
 
                 <DataGridTextColumn Header="Value" Width="*"
-                            Binding="{Binding Value, UpdateSourceTrigger=PropertyChanged}"/>
+                            Binding="{Binding Value, UpdateSourceTrigger=LostFocus}"/>
             </DataGrid.Columns>
         </DataGrid>
 
